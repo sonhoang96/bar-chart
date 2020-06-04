@@ -5,23 +5,22 @@
 	box-sizing: border-box;
 }
 
+rect.layout:hover {
+	fill: #ffffff;
+}
+
 .data-board {
     display: flex;
     justify-content: center;
     margin-top: 1em;
 }
 
-.chart {
-    width: 900px;
-    height: 450px;
-    background: beige;
-}
-
 h1.title {
     text-align: center;
     font-size: 3em;
-    font-weight: 300;
+    font-weight: unset;
     line-height: 80px;
+    color: #3f51b5;
 }
 
 .container {
@@ -39,6 +38,6 @@ div#app {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: dimgrey;
+    background: #3F51B5;
     font-family: 'Montserrat', sans-serif;
 }
