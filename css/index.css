@@ -5,6 +5,14 @@
 	box-sizing: border-box;
 }
 
+div#info-board {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 rect.layout:hover {
 	fill: #ffffff;
 }
@@ -12,7 +20,7 @@ rect.layout:hover {
 .data-board {
     display: flex;
     justify-content: center;
-    margin-top: 1em;
+    position: relative;
 }
 
 h1.title {
