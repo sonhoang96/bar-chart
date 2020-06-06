@@ -7,12 +7,7 @@ var color = '#3F51B5';
 var infoBoard = d3.select('.data-board')
 				  .append('div')
 				  .attr('id','info-board')
-				  .style('opacity', 1);
-
-var hover = d3.select('.data-board')
-				  .append('div')
-				  .attr('class','overlay')
-				  .style('opacity', 1);
+				  .style('opacity', 0);
 
 var chart = d3.select('.data-board')
 				  .append('svg')
@@ -92,7 +87,7 @@ const request =  new XMLHttpRequest();
 
     	//find min and max of GDP
     	const gdpMax = d3.max(GDP);
-    	const gdpMin = d3.min(GDP);
+    	// const gdpMin = d3.min(GDP);
 
     	const YScale = d3.scaleLinear()
     					 .domain([0, gdpMax])
@@ -124,12 +119,31 @@ const request =  new XMLHttpRequest();
     	  .attr('data-gdp', (d,i) => json.data[i][1])
     	  .attr('fill', color)
     	  .attr('class', 'layout')
-
+    	  .on('mouseover', (d,i) => {
+    	  	 infoBoard.transition()
+    	  	 		  .duration(0)
+    	  	 		  .style('width', margin * 1.5 + 'px')
+    	  	 		  .style('height', (margin * 3/4) + 'px')
+    	  	 		  .style('background', '#2b2b2b')
+    	  	 		  .style('color','whitesmoke')
+    	  	 		  .style('opacity', 1)
+    	  	 		  .style('top', d - margin * 3/4 + 'px')
+    	  	 		  .style('border-radius', '5px')
+    	  	 		  .style('box-shadow','#404040 0px 0px 5px')
+    	  	 		  .style('left', XScale(date[i]) + margin * 1.5 + 'px');
+    	  	 infoBoard.html(times[i] + '<br>' + '$' + GDP[i] + String.fromCharCode(160) + 'Billion');  	 	  
+    	  })
+    	  .on('mouseout', (d,i) => {
+    	  	 infoBoard.transition()
+    	  	 		  .duration(100)
+    	  	 		  // .style('opacity', 0)
+    	  });
     	//style XAxis and YAxis
     	d3.selectAll('path')
     	  .attr('stroke', 'black')
-    	  .attr('stroke-width', 2)
-    	console.log(gdpMax, gdpMin, gdpScale.length);
+    	  .attr('stroke-width', 2);
+
+    	//
     	console.log(dateMax, dateMin)
     	console.log(json)
     }
