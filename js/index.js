@@ -136,7 +136,7 @@ const request =  new XMLHttpRequest();
     	  .on('mouseout', (d,i) => {
     	  	 infoBoard.transition()
     	  	 		  .duration(100)
-    	  	 		  // .style('opacity', 0)
+    	  	 		  .style('opacity', 0)
     	  });
     	//style XAxis and YAxis
     	d3.selectAll('path')
@@ -144,6 +144,4 @@ const request =  new XMLHttpRequest();
     	  .attr('stroke-width', 2);
 
     	//
-    	console.log(dateMax, dateMin)
-    	console.log(json)
     }
